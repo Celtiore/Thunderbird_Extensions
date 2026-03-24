@@ -1,0 +1,4 @@
+# Only commit XPI files, ignore source dirs
+**/src/
+*.bak
+.DS_Store
