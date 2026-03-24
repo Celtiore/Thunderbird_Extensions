@@ -10,12 +10,20 @@
 - **Page d'options** avec bouton de réinitialisation des données et infos de compatibilité
 - **Récap du scan** : détail des comptes et dossiers scannés après chaque scan
 - **Détection améliorée des dossiers Envoyés** : fallback par nom en plus du type API
+- **Suppression d'emails** : checkbox par contact, sélection multiple, bouton supprimer avec double confirmation (dialog + saisie "SUPPRIMER")
+- **Liste d'exclusion** : les contacts supprimés sont automatiquement exclus des prochains scans
+- **Import/export des exclusions** : sauvegarde et restauration de la liste d'exclusion (persiste après réinstallation)
+- **Export automatique des exclusions** proposé après chaque suppression
+- **Skill `/contact-analyze`** : pipeline d'analyse en 5 passes (nettoyage, analyse Claude, consolidation, validation filtres, fusion master)
+- **Viewer HTML** : visualiseur interactif avec cards cliquables, filtres, panneau détail, bouton copier email
+- **Fichier `contacts-master.json`** : source de vérité cumulative entre les runs d'analyse
 
 ### Améliorations
 - Format de nom d'export : `contact-lens-YYYY-MM-DD.json` (suppression du préfixe `export-`)
 - Colonne "Sujets" dans l'export CSV (sujets séparés par ` | `)
 - Exploration récursive des sous-dossiers via `browser.folders.getSubFolders(folder.id)`
 - Compatibilité étendue : Thunderbird 128.0 — 148.*
+- Alignement des colonnes dans le dashboard (table-layout fixed)
 
 ## [1.0] - 2026-03-24
 

@@ -1,4 +1,23 @@
-# Only commit XPI files, ignore source dirs
+# Sources (private, on dev/* branches only)
 **/src/
 *.bak
 .DS_Store
+
+# Claude Code config (local only, except skills)
+.claude/*
+!.claude/skills/
+
+# Planning (local only)
+.celtiore-vibe/
+
+# Exports: commit structure + examples, ignore real data
+exports/scans/*.json
+exports/scans/*.csv
+exports/results/*.json
+exports/results/*.csv
+!exports/results/viewer.html
+!exports/scans/.gitkeep
+!exports/results/.gitkeep
+
+# Keep filter templates but ignore personal exclusion exports
+exports/filters/contact-lens-exclusions-*.json

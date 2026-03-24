@@ -1,0 +1,22 @@
+{
+  "_description": "EXEMPLE — Domaines, emails et patterns regex a exclure de l'analyse Contact Lens. Copier ce fichier en 'exclusions.json' et adapter.",
+  "_updated": "2026-03-24",
+  "emails": [
+    "example-spam@example.com"
+  ],
+  "domains": [
+    "facebookmail.com",
+    "linkedin.com",
+    "stripe.com",
+    "paypal.com",
+    "amazonses.com",
+    "sendgrid.net"
+  ],
+  "patterns": [
+    "^noreply@",
+    "^no-reply@",
+    "^newsletter@",
+    "^notifications?@",
+    "^mailer-daemon@"
+  ]
+}

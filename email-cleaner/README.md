@@ -11,7 +11,7 @@ Nettoyage automatique des emails selon des critères personnalisables.
 | **Version originale** | 2.2 |
 | **Version modifiée** | 2.2-fork |
 | **ID** | `email-cleaner@example.com` |
-| **Compatibilité** | Thunderbird 128.0 - 140.* |
+| **Compatibilité** | Thunderbird 128.0 - 148.* |
 | **Licence** | Licence originale de DomoGeek.ovh |
 
 ## Fonctionnalités

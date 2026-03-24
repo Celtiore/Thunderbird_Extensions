@@ -1,0 +1,30 @@
+{
+  "_description": "EXEMPLE — Mots-cles pour detecter les sujets pertinents et categoriser. Copier ce fichier en 'keywords.json' et adapter.",
+  "_updated": "2026-03-24",
+  "categories": {
+    "devis": {
+      "label_fr": "Devis / Estimation",
+      "label_en": "Quote / Estimate",
+      "keywords_fr": ["devis", "estimation", "tarif", "prix", "proposition commerciale"],
+      "keywords_en": ["quote", "estimate", "pricing", "proposal"]
+    },
+    "commande": {
+      "label_fr": "Commande / Livraison",
+      "label_en": "Order / Delivery",
+      "keywords_fr": ["commande", "bon de commande", "livraison", "expedition"],
+      "keywords_en": ["order", "purchase order", "delivery", "shipping"]
+    },
+    "event": {
+      "label_fr": "Evenement",
+      "label_en": "Event",
+      "keywords_fr": ["salon", "festival", "evenement", "invitation", "stand"],
+      "keywords_en": ["event", "festival", "exhibition", "invitation", "booth"]
+    },
+    "facture": {
+      "label_fr": "Facture / Paiement",
+      "label_en": "Invoice / Payment",
+      "keywords_fr": ["facture", "paiement", "reglement", "avoir"],
+      "keywords_en": ["invoice", "payment", "receipt"]
+    }
+  }
+}
