@@ -4,11 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Monorepo containing three Thunderbird extensions (WebExtensions):
+Monorepo containing four Thunderbird extensions (WebExtensions):
 
 - **Email Cleaner** (v2.2+) — Manifest V3, auto-deletes emails based on sender/recipient/domain/subject/size filters with scheduling, dry-run simulation, and tri-state folder picker UI. Fork for Thunderbird 128–140+ compatibility.
 - **Xpunge** (v5.0.2+) — Manifest V2, empties Trash/Junk and compacts folders across multiple accounts. Uses Experiment APIs (`browser.Xpunge.*`, `browser.LegacyPrefsMigrator.*`). Fork for Thunderbird 128–148 compatibility.
 - **Contact Lens** (v1.1) — Manifest V3, scans all email accounts to extract, deduplicate, and classify contacts by relationship direction (bidirectional/received-only/sent-only). Features incremental scan, enriched export (subjects + body snippets), dashboard with tree view and folder picker, search, sort, CSV/JSON export. Paired with `/contact-analyze` skill for 4-pass analysis pipeline.
+- **Inventaire & Désabonnement** (`tb-unsub/`, v0.1.0) — Manifest V3, inventories newsletter senders per account, unsubscribes via RFC 8058 one-click POST (mailto fallback as draft), keeps a per-sender record and an append-only evidence log. Original project (not a fork), prototype from the 2026-08-19 framing (`tb-unsub/RAPPORT.md`). Full project context and design rules in `tb-unsub/CLAUDE.md`.
 
 ## Build & Packaging
 
@@ -23,6 +24,9 @@ cd xpunge/src && zip -r '../{786abda0-fd14-d247-bf69-38b2fc18491b}.xpi' .
 
 # Contact Lens
 cd contact-lens/src && zip -r ../contact-lens@example.com.xpi . -x '*.bak'
+
+# Inventaire & Désabonnement
+cd tb-unsub/src && ./build.sh   # → ../inventaire-desabonnement@fteventspro.app.xpi
 ```
 
 Install the `.xpi` in Thunderbird via Menu > Add-ons > Install from file.
@@ -55,6 +59,12 @@ Note: `.gitignore` excludes `**/src/` from git tracking — only `.xpi` files an
 - `dashboard.html` / `dashboard.js` / `dashboard.css` — full-tab dashboard UI: tree view grouped by direction then account, folder picker with cascade selection, column sorting, text search, progress bar, enriched export overlay, CSV/JSON export.
 - `options.html` / `options.js` — options page with data reset button and compatibility info.
 - Locales: `_locales/{fr,en}/` (WebExtension i18n standard).
+
+### Inventaire & Désabonnement (`tb-unsub/src/`)
+- `background.js` — context menu on message selection (« Désabonner et ficher l'expéditeur »), groups selected messages by sender.
+- `lib/store.js` (settings, sender records, log in `storage.local`), `lib/parse.js` (`List-Unsubscribe` headers, address normalisation incl. disposable routing addresses), `lib/scan.js` (account scan, one `getFull()` per sender, paginated `continueList`), `lib/unsub.js` (one-click POST, mailto draft, external link).
+- `popup/` — account picker, inventory, batch processing. Classic scripts (no ES modules), `messenger.*` API, no network calls except the unsubscribe URLs themselves.
+- Design rules that must not be broken (one header read per sender, nothing sent without human validation except one-click POST, never act on a message without `List-Unsubscribe`, append-only log): see `tb-unsub/CLAUDE.md`.
 
 ### Contact Analysis Pipeline (`exports/` + `.claude/skills/`)
 - `exports/scans/` — dated enriched export scans (JSON + CSV) from Contact Lens.

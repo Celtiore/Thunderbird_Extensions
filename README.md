@@ -34,6 +34,15 @@ Analyse et structure les contacts depuis vos emails. Scanne tous les comptes et 
 
 > [Fonctionnalites detaillees, pipeline d'analyse et changelog](contact-lens/README.md)
 
+### [Inventaire & Désabonnement](tb-unsub/README.md)
+
+Inventorie les expéditeurs de newsletters sur les comptes sélectionnés, se désabonne via RFC 8058 (POST one-click) quand c'est possible et garde une fiche par expéditeur avec un journal de preuves horodaté. Prototype v0.1 (MailExtension Manifest V3), cadrage dans `tb-unsub/RAPPORT.md`.
+
+- **Auteur** : Patrick (projet original, 2026)
+- **ID** : `inventaire-desabonnement@fteventspro.app`
+
+> [Installation, briques et feuille de route](tb-unsub/README.md)
+
 ## Compatibilite
 
 | Extension | Version | Thunderbird min | Thunderbird max |
@@ -41,6 +50,7 @@ Analyse et structure les contacts depuis vos emails. Scanne tous les comptes et 
 | [Email Cleaner](email-cleaner/README.md) | 2.2+ | 128.0 | 148.* |
 | [Xpunge](xpunge/README.md) | 5.0.2+ | 128.2.0 | 148.* |
 | [Contact Lens](contact-lens/README.md) | 1.1 | 128.0 | 148.* |
+| [Inventaire & Désabonnement](tb-unsub/README.md) | 0.1.0 | 128.0 | — (pas de max déclaré) |
 
 ## Installation
 
